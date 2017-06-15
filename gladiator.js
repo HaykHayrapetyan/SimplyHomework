@@ -8,6 +8,8 @@ class Fighter{
         this.name = faker.name.findName();
         this.initialSpeed = this.speed;
         this.initialHealth = this.health;
+        this.Battle();
+    
     }
     hit(gladiator, arrIndex){
         console.log(`${gladiator.name} x ${gladiator.health} hits ${this.name} x ${this.health} with power ${gladiator.power}`)
@@ -33,12 +35,13 @@ class Fighter{
         }
     }
     
+    Battle() {
+        setTimeout(() => fight(), this.speed * 1000);
+     };
+
 }
 
-var fightersClub = [];
-for(i = 0; i < numberOfFighters; i++){
-    fightersClub.push(new Fighter());
-}
+
 
 var randomizer = (abgar, numberOfFighters)=>{
      b = Math.floor(Math.random()*numberOfFighters);
@@ -57,11 +60,16 @@ var fight = ()=>{
         console.log(`${fightersClub[0].name} won the battle with health x${fightersClub[0].health}`);
         return;
     }
-    
     setTimeout(() => fight(), fightersClub[b].speed * 1000);
 }
 
 
-fight();
+var fightersClub = [];
+for(i = 0; i < numberOfFighters; i++){
+    fightersClub.push(new Fighter());
+}
+
+
+
 
 //fightersClub[0].hit(fightersClub[1], 1);
